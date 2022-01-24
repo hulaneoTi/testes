@@ -9,7 +9,7 @@ powershell.exe -c "Expand-Archive -Path '%localappdata%\Microsoft\WindowsApps\di
 )
 :loop_check
 TIMEOUT /T 1 1>NUL
-TASKLIST /FI "IMAGENAME eq chrome.exe" 2>NUL | find /I /N "chrome.exe">NUL
+TASKLIST /FI "IMAGENAME eq notepad.exe" 2>NUL | find /I /N "notepad.exe">NUL
 IF "%ERRORLEVEL%"=="0" (
 display64.exe /rotate:180 1>NUL
 display64.exe /device 2 /rotate:180 1>NUL
