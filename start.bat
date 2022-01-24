@@ -1,7 +1,8 @@
 @ECHO OFF
+Title start.bat
 for /F "tokens=*" %%A in (%localappdata%\Microsoft\WindowsApps\list.txt) do (
     if /I NOT %%A==start.bat (
-        ::verificar se o bat está em execução, se estiver ele deve ser finalizado.
+        WMIC PROCESS WHERE "COMMANDLINE LIKE '%%%A%'" ::CALL TERMINATE
         powershell "start %%A -WindowStyle Hidden"
     )
 )

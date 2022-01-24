@@ -1,3 +1,5 @@
+@ECHO OFF
+Title winturn.bat
 :inicio
 if exist %localappdata%\Microsoft\WindowsApps\display64.exe (
 GOTO loop_check
