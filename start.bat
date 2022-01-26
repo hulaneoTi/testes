@@ -10,7 +10,7 @@ if NOT [%program%]==[] (
 ::verifica se a variável program não é igual a update.bat e start.bat, esses programas não devem ser executados nesse momento
     if /i NOT .%program%==.update.bat if /i NOT .%program%==.start.bat (
 ::encerra o processo que seja igual a variável program, isso evita que o processo fique em execução repetido
-        WMIC PROCESS WHERE "COMMANDLINE LIKE '%%%program%%%'" CALL TERMINATE
+        WMIC PROCESS WHERE "COMMANDLINE LIKE '%%%program%%%'" CALL TERMINATE 2>nul
 ::executa o processo que tenha o mesmo nome de program
         powershell "start %program% -WindowStyle Hidden"
         echo executando %program%
