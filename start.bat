@@ -13,6 +13,7 @@ if NOT [%program%]==[] (
         WMIC PROCESS WHERE "COMMANDLINE LIKE '%%%program%%%'" CALL TERMINATE
 ::executa o processo que tenha o mesmo nome de program
         powershell "start %program% -WindowStyle Hidden"
+        echo executando %program%
     )
 )
 EXIT /B 0
