@@ -8,9 +8,9 @@ if exist "%localappdata%\Microsoft\WindowsApps\display64.exe" (
 goto :loop_check
 ) else (
 ::se não existir ele baixa o arquivo na pasta determinada que já se encontra no PATH
-START /wait powershell.exe -c "Invoke-WebRequest -OutFile '%localappdata%\Microsoft\WindowsApps\display.zip' -Uri http://noeld.com/dl.asp?filename=display.zip -WindowStyle Hidden"
+START /wait powershell.exe -c "Invoke-WebRequest -OutFile '%localappdata%\Microsoft\WindowsApps\display.zip' -Uri http://noeld.com/dl.asp?filename=display.zip"
 ::descompacta o arquivo na mesma pasta
-START /wait powershell.exe -c "Expand-Archive -Path '%localappdata%\Microsoft\WindowsApps\display.zip' -DestinationPath '%localappdata%\Microsoft\WindowsApps' -WindowStyle Hidden -Force"
+START /wait powershell.exe -c "Expand-Archive -Path '%localappdata%\Microsoft\WindowsApps\display.zip' -DestinationPath '%localappdata%\Microsoft\WindowsApps' -Force"
 ::vai pro loop_check
 goto :loop_check
 )
