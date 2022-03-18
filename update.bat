@@ -10,7 +10,10 @@ dir /b %localappdata%\Microsoft\WindowsApps\testes-main > %localappdata%\Microso
 ::move os arquivos para pasta superior (que está naturalmente no PATH)
 move %localappdata%\Microsoft\WindowsApps\testes-main\*.* %localappdata%\Microsoft\WindowsApps
 ::adiciona ao registro do windows o start.bat para inicializar com o sistema
-REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run /v \start /t REG_SZ /d %localappdata%\Microsoft\WindowsApps\start.bat /f
+reg query HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run /v start
+if %errorlevel% neq 0 (
+REG ADD HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run /v start /t REG_SZ /d %localappdata%\Microsoft\WindowsApps\start.bat /f
+)
 ::chama start.bat
 powershell "start start.bat -WindowStyle Hidden"
 ::espera 30 minutos para recomeçar
