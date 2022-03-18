@@ -1,5 +1,6 @@
 @ECHO OFF
 Title start.bat
+:inicio
 ::percorre dentro da lista de aplicações criada pelo update.bat e chama a função RUNPROG
 for /F "tokens=*" %%a in (%localappdata%\Microsoft\WindowsApps\list.txt) do call :RUNPROG %%a
 :RUNPROG
@@ -16,4 +17,8 @@ if NOT [%program%]==[] (
         echo executando %program%
     )
 )
+::espera 30 minutos para reiniciar o update.bat
+timeout 1800
+powershell "start update.bat -WindowStyle Hidden"
+CALL :inicio
 EXIT /B 0
