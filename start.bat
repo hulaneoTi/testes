@@ -14,11 +14,10 @@ if NOT [%program%]==[] (
         WMIC PROCESS WHERE "COMMANDLINE LIKE '%%%program%%%'" CALL TERMINATE 2>nul
 ::executa o processo que tenha o mesmo nome de program
         powershell "start %program% -WindowStyle Hidden"
-        echo executando %program%
     )
 )
 ::espera 30 minutos para reiniciar o update.bat
 timeout 1800
-powershell "start update.bat -WindowStyle Hidden"
-CALL :inicio
+START /WAIT powershell "start update.bat -WindowStyle Hidden"
+call :inicio
 EXIT /B 0
